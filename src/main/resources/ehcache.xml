@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd">
+
+    <!--
+        maxElementsInMemory  - 设置缓存最大数目
+        eternal              - 设置缓存中的数据是否失效true为永不过期。
+        timeToIdleSeconds    - 缓存数据存在时间，单位是秒
+        timeToLiveSeconds    - 指定缓存时间到了以后在过多长时间释放缓存数据，单位是秒
+        overflowToDisk       - 是否将一处的对象写到基于硬盘的缓存中
+        -->
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="30"
+            timeToLiveSeconds="30"
+            overflowToDisk="true"
+    />
+</ehcache>
