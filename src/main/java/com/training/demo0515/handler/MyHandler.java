@@ -11,7 +11,9 @@ public class MyHandler extends TextWebSocketHandler {
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) throws IOException {
         System.out.println("==========handleTextMessage start ===============message:" + message);
-        session.sendMessage(message);
+        String m1 = new String(message.asBytes());
+        TextMessage w1 = new TextMessage(m1 + "hello world");
+        session.sendMessage(w1);
         System.out.println("==========handleTextMessage end ==============");
 
     }

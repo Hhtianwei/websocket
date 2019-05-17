@@ -40,7 +40,7 @@ HELP.md
 .mtj.tmp/
 
 # Package Files #
-*.jar
+*.jarServerEndpoint
 *.war
 *.nar
 *.ear
