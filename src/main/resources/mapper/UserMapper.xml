@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.training.demo0515.mapper.UserMapper">
+
+    <resultMap id="userMap" type="User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="nickName" column="nickName"/>
+        <result property="age" column="age"/>
+    </resultMap>
+
+    <sql id="queryCondition">
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="nickName != null and nickName != ''">
+                and nickName = #{nickName}
+            </if>
+
+        </where>
+    </sql>
+
+    <select id="findAll" parameterType="map" resultMap="userMap">
+        SELECT * FROM user
+        <include refid="queryCondition" />
+    </select>
+
+    <select id="findById" parameterType="int" resultMap="userMap">
+    	SELECT * FROM user WHERE id =#{id}
+    </select>
+
+    <insert id="insert" parameterType="user">
+        INSERT INTO user(
+        name,
+        password,
+        nickName,
+        age
+        )VALUES(
+        #{name},
+        #{password},
+        #{nickName},
+        #{age}
+        )
+    </insert>
+
+</mapper>
